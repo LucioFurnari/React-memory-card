@@ -14,6 +14,23 @@ function App() {
     {n:8, clicked: false},
     {n:9, clicked: false},
   ])
+  const [score, setScore] = useState({score: 0, bestScore: 0})
+
+  function addScore() {
+    const newArr = cards.slice()
+    newArr.map((item, index) => {
+      if(item.clicked == false) {
+        setScore({...score, score: score.score + 1, bestScore: score.score > score.bestScore ? 
+          score.bestScore + 1 :
+          score.bestScore
+        })
+        console.log(score)
+      } else if (item.clicked == true) {
+        setScore({...score, score: 0 })
+      }
+    })
+    
+  }
 
   function selectCard(id) {
     const newArr = cards.map((item, index) => {
@@ -23,6 +40,7 @@ function App() {
       return item
     })
     setCards(newArr)
+    addScore()
   }
 
   function shuffle(ev) {
@@ -43,7 +61,7 @@ function App() {
   }
   return (
     <>
-    <Nav />
+    <Nav score={score.score} bestScore={score.bestScore}/>
     <Main cards={cards} shuffle={shuffle}/>
     </>
   )
