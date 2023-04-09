@@ -14,7 +14,21 @@ export default function Main() {
     {n:9, clicked: false},
   ])
 
-  function shuffle() {
+  function selectCard(id) {
+    const newArr = cards.map((item, index) => {
+      if(index == id) {
+        item.clicked = true;
+      }
+      return item
+    })
+    setCards(newArr)
+  }
+
+  function shuffle(ev) {
+    ev.stopPropagation()
+    const { id } = ev.currentTarget
+    console.log(ev.currentTarget)
+    selectCard(id)
     let currentIndex = cards.length
     let randomize;
     let newArr = cards.slice();
@@ -30,7 +44,7 @@ export default function Main() {
   return (
     <div className="card-grid">
       {
-      cards.map((item,index) => <Card key={item} id={index} number={item} handleClick={shuffle}/>)
+      cards.map((item,index) => <Card key={item.n} id={index} number={item.n} handleClick={shuffle}/>)
       }
     </div>
   )
