@@ -2,7 +2,17 @@ import Card from "./Card"
 import { useEffect, useState } from 'react'
 
 export default function Main() {
-  const [cards, setCards] = useState([1,2,3,4,5,6,7,8,9])
+  const [cards, setCards] = useState([
+    {n:1, clicked: false},
+    {n:2, clicked: false},
+    {n:3, clicked: false},
+    {n:4, clicked: false},
+    {n:5, clicked: false},
+    {n:6, clicked: false},
+    {n:7, clicked: false},
+    {n:8, clicked: false},
+    {n:9, clicked: false},
+  ])
 
   function shuffle() {
     let currentIndex = cards.length
@@ -20,7 +30,7 @@ export default function Main() {
   return (
     <div className="card-grid">
       {
-      cards.map((item,index) => <Card key={item.toString()} id={index} number={item} handleClick={shuffle}/>)
+      cards.map((item,index) => <Card key={item} id={index} number={item} handleClick={shuffle}/>)
       }
     </div>
   )
