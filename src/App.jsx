@@ -4,15 +4,15 @@ import Main from "./components/Main"
 import './styles/index.css'
 function App() {
   const [cards, setCards] = useState([
-    {n:1, clicked: false},
-    {n:2, clicked: false},
-    {n:3, clicked: false},
-    {n:4, clicked: false},
-    {n:5, clicked: false},
-    {n:6, clicked: false},
-    {n:7, clicked: false},
-    {n:8, clicked: false},
-    {n:9, clicked: false},
+    {n:1, clicked: false, src: './src/assets/images/Finn_with_bionic_arm-0.webp'},
+    {n:2, clicked: false, src: './src/assets/images/BMO.webp'},
+    {n:3, clicked: false, src: './src/assets/images/Bronwyn_Current_Design.webp'},
+    {n:4, clicked: false, src: './src/assets/images/1ATLadyRainicornLook.webp'},
+    {n:5, clicked: false, src: './src/assets/images/Jakesalad.webp'},
+    {n:6, clicked: false, src: './src/assets/images/Lumpy_Space.webp'},
+    {n:7, clicked: false, src: './src/assets/images/Marceline1.webp'},
+    {n:8, clicked: false, src: './src/assets/images/Princess_Bubblegum.webp'},
+    {n:9, clicked: false, src: './src/assets/images/Young_Ice_King_without_crown.webp'},
   ])
   const [score, setScore] = useState({score: 0, bestScore: 0})
 
