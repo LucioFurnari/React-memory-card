@@ -14,25 +14,25 @@ function App() {
     {n:8, clicked: false},
     {n:9, clicked: false},
   ])
-  const [score, setScore] = useState({score: 0, bestScore: 0})
+  const [score, setScore] = useState({score: 0, bestScore: 0, reset: false})
 
-  function addScore() {
+  function addScore(id) {
     const newArr = cards.slice()
     newArr.map((item, index) => {
-      if(item.clicked == false) {
-        setScore({...score, score: score.score + 1, bestScore: score.score > score.bestScore ? 
-          score.bestScore + 1 :
-          score.bestScore
-        })
-        console.log(score)
-      } else if (item.clicked == true) {
-        setScore({...score, score: 0 })
+      if(index == id) {
+        if(!item.clicked) {
+          console.log(item.clicked)
+          setScore({...score, score: score.score + 1, bestScore: score.bestScore + 1})
+        } else {
+          setScore({...score, score: 0, bestScore: score.bestScore })
+          setCards(cards.map(item => item.clicked = false))
+        }
       }
     })
-    
   }
 
   function selectCard(id) {
+    addScore(id)
     const newArr = cards.map((item, index) => {
       if(index == id) {
         item.clicked = true;
@@ -40,7 +40,6 @@ function App() {
       return item
     })
     setCards(newArr)
-    addScore()
   }
 
   function shuffle(ev) {
