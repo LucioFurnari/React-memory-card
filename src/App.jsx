@@ -20,11 +20,10 @@ function App() {
     const newArr = cards.map((item, index) => {
       if(index == id) {
         if(item.clicked) {
-          setScore({...score, score: 0, bestScore: score.bestScore })
+          setScore({...score, score: 0, bestScore: score.score })
           setCards(cards.map(item => item.clicked = false))
         } else {
-          console.log(item.clicked)
-          setScore({...score, score: score.score + 1, bestScore: score.bestScore + 1})
+          setScore({...score, score: score.score + 1})
           item.clicked = true;
         }
       }
